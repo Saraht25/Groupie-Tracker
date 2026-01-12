@@ -17,11 +17,11 @@ type Filters struct {
 	CreationYear        Range
 	CreationYearEnabled bool
 
-	FirstAlbumYear        Range
-	FirstAlbumEnabled     bool
+	FirstAlbumYear    Range
+	FirstAlbumEnabled bool
 
-	MemberCount        Range
-	MemberCountEnabled bool
+	MemberCount          Range
+	MemberCountEnabled   bool
 	MemberCountWhitelist []int
 
 	Locations []string
@@ -145,5 +145,5 @@ func firstYearFromString(s string) (int, bool) {
 	if err != nil {
 		return 0, false
 	}
-	return year, tru
+	return year, true
 }

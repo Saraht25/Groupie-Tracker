@@ -7,7 +7,7 @@ import (
 
 func StartApp() {
 	a := app.New()
-	w := a.NewWindow("groupie Tracker")
+	w := a.NewWindow("Groupie Tracker")
 	w.SetContent(Home())
 	w.ShowAndRun()
 }

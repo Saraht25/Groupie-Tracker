@@ -1,13 +1,12 @@
 package ui
 
 import (
+	"Groupie-Tracker/models"
 	"errors"
 	"net/url"
 	"strings"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
-	"Groupie-Tracker/models"
 )
 
 func ArtistCard(a models.Artist) *widget.Card {

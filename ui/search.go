@@ -1,19 +1,19 @@
 package ui
 
 import (
+	"Groupie-Tracker/models"
 	"regexp"
 	"strconv"
 	"strings"
-	"Groupie-Tracker/models"
 )
 
 type SuggestionType string
 
 const (
-	SuggestionArtist      SuggestionType = "artist"
-	SuggestionMember      SuggestionType = "member"
-	SuggestionLocation    SuggestionType = "location"
-	SuggestionFirstAlbum  SuggestionType = "first_album_year"
+	SuggestionArtist       SuggestionType = "Artist"
+	SuggestionMember       SuggestionType = "member"
+	SuggestionLocation     SuggestionType = "location"
+	SuggestionFirstAlbum   SuggestionType = "first_album_year"
 	SuggestionCreationYear SuggestionType = "creation_year"
 )
 

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"net/url"
 	"strings"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
 )
@@ -24,7 +25,7 @@ func OpenSpotifyURL(rawURL string) error {
 
 	parsed, err := url.Parse(rawURL)
 	if err != nil || parsed.Scheme == "" || parsed.Host == "" {
-		return errors.New("spotify URL invalide")
+		return errors.New("Spotify URL invalide")
 	}
 
 	app := fyne.CurrentApp()

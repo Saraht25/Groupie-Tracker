@@ -145,5 +145,5 @@ func firstYearFromString(s string) (int, bool) {
 	if err != nil {
 		return 0, false
 	}
-	return year, true
+	return year, tru
 }

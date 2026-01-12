@@ -6,6 +6,8 @@ import (
 	"net/url"
 	"strings"
 
+	"Groupie-Tracker/models"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
 )

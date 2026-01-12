@@ -1,8 +1,6 @@
 package ui
 
 import (
-	"regexp"
-	"strconv"
 	"strings"
 
 	"Groupie-Tracker/models"
@@ -132,18 +130,4 @@ func buildIntSet(values []int) map[int]struct{} {
 		set[v] = struct{}{}
 	}
 	return set
-}
-
-var yearRegexp = regexp.MustCompile(`\b(\d{4})\b`)
-
-func firstYearFromString(s string) (int, bool) {
-	match := yearRegexp.FindStringSubmatch(s)
-	if len(match) < 2 {
-		return 0, false
-	}
-	year, err := strconv.Atoi(match[1])
-	if err != nil {
-		return 0, false
-	}
-	return year, true
 }

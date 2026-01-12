@@ -1,6 +1,6 @@
 module Groupie-Tracker
 
-go 1.25.3
+go 1.21
 
 require fyne.io/fyne/v2 v2.7.2
 

@@ -10,7 +10,7 @@ import (
 type SuggestionType string
 
 const (
-	SuggestionArtist       SuggestionType = "Artist"
+	SuggestionArtist       SuggestionType = "artist"
 	SuggestionMember       SuggestionType = "member"
 	SuggestionLocation     SuggestionType = "location"
 	SuggestionFirstAlbum   SuggestionType = "first_album_year"

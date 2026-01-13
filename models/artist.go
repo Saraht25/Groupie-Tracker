@@ -3,6 +3,7 @@ package models
 import (
 	"strings"
 	"fmt"
+	"strconv"
 )
 		
 
@@ -59,4 +60,14 @@ func (a *Artist) MatchesSearch(query string) bool{
 
 func (a *Artist) IsCreatedBetween(start, end int) bool{
 	return a.CreationDate >= start && a.CreationDate <= end
+}
+
+
+
+func (a *Artist) isFirstAlbumBetween(start, end int) bool{
+	album, err := strconv.Atoi(a.FirstAlbum)
+	if err != nil{
+		return false
+	}
+	return album >= start && album <= end
 }

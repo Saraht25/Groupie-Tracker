@@ -71,3 +71,7 @@ func (a *Artist) isFirstAlbumBetween(start, end int) bool{
 	}
 	return album >= start && album <= end
 }
+
+func (a *Artist) FormatMembers() string {
+	return strings.Join(a.Members, ", ")
+}

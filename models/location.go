@@ -5,3 +5,7 @@ type Location struct {
     City    string   `json:"city"`
     Country string   `json:"country"`
 }
+
+func (l *Location) HasLocation(loc string) bool {
+    return l.City == loc
+}

@@ -1,12 +1,11 @@
 package api
 
 import (
+	"Groupie-Tracker/models"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
-
-	"groupie-tracker/models"
 )
 
 const (
@@ -45,8 +44,29 @@ func fetchAPI(url string, target interface{}) error {
 
 func GetArtists() ([]models.Artist, error) {
 	var artists []models.Artist
-	err := fetchAPI(artistsEndpoint, &artists)
-	return artists, err
+	if err := fetchAPI(artistsEndpoint, &artists); err != nil {
+		return nil, err
+	}
+
+	for i := range artists {
+		locs, err := getArtistLocations(artists[i].LocationsURL)
+		if err != nil {
+			return nil, fmt.Errorf("fetch locations for artist %d: %w", artists[i].Id, err)
+		}
+		artists[i].Locations = locs
+	}
+
+	return artists, nil
+}
+
+func getArtistLocations(url string) ([]string, error) {
+	var payload struct {
+		Locations []string `json:"locations"`
+	}
+	if err := fetchAPI(url, &payload); err != nil {
+		return nil, err
+	}
+	return payload.Locations, nil
 }
 
 func GetRelations() ([]models.Relation, error) {

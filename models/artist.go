@@ -1,19 +1,22 @@
 package models
 
 import (
-	"strings"
 	"fmt"
 	"strconv"
+	"strings"
 )
-		
 
 type Artist struct {
-    Id          int      `json:"id"`
-    Name        string   `json:"name"`
-    Image       string   `json:"image"`
-    Members     []string `json:"members"`
-    CreationDate int     `json:"creationDate"`
-    FirstAlbum  string   `json:"firstAlbum"`
+	Id              int      `json:"id"`
+	Name            string   `json:"name"`
+	Image           string   `json:"image"`
+	Members         []string `json:"members"`
+	CreationDate    int      `json:"creationDate"`
+	FirstAlbum      string   `json:"firstAlbum"`
+	LocationsURL    string   `json:"locations"`
+	ConcertDatesURL string   `json:"concertDates"`
+	RelationsURL    string   `json:"relations"`
+	Locations       []string `json:"-"`
 }
 
 func (a *Artist) GetMembersCount() int {
@@ -21,7 +24,7 @@ func (a *Artist) GetMembersCount() int {
 }
 
 func (a *Artist) HasMember(name string) bool {
-	for _ , member := range a.Members {
+	for _, member := range a.Members {
 		if member == name {
 			return true
 		}
@@ -29,7 +32,7 @@ func (a *Artist) HasMember(name string) bool {
 	return false
 }
 
-func (a *Artist) MatchesSearch(query string) bool{
+func (a *Artist) MatchesSearch(query string) bool {
 	query = strings.ToLower(query)
 	// Vérifier le nom de l'artiste
 	if strings.Contains(strings.ToLower(a.Name), query) {
@@ -57,16 +60,13 @@ func (a *Artist) MatchesSearch(query string) bool{
 	return false
 }
 
-
-func (a *Artist) IsCreatedBetween(start, end int) bool{
+func (a *Artist) IsCreatedBetween(start, end int) bool {
 	return a.CreationDate >= start && a.CreationDate <= end
 }
 
-
-
-func (a *Artist) isFirstAlbumBetween(start, end int) bool{
+func (a *Artist) isFirstAlbumBetween(start, end int) bool {
 	album, err := strconv.Atoi(a.FirstAlbum)
-	if err != nil{
+	if err != nil {
 		return false
 	}
 	return album >= start && album <= end

@@ -1,13 +1,18 @@
 package ui
 
 import (
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/container"
 )
 
 func StartApp() {
 	a := app.New()
 	w := a.NewWindow("Groupie Tracker")
-	w.SetContent(Home())
+
+	// Définir une taille de fenêtre appropriée pour une application de bureau
+	w.Resize(fyne.NewSize(1200, 800))
+	w.CenterOnScreen()
+
+	w.SetContent(Home(a, w))
 	w.ShowAndRun()
 }

@@ -62,23 +62,23 @@ func BuildSuggestions(query string, artists []models.Artist) []Suggestion {
 
 	for _, a := range artists {
 		if containsIgnoreCase(a.Name, q) {
-			add(a.Name, SuggestionArtist, a.ID)
+			add(a.Name, SuggestionArtist, a.Id)
 		}
 		for _, m := range a.Members {
 			if containsIgnoreCase(m, q) {
-				add(m, SuggestionMember, a.ID)
+				add(m, SuggestionMember, a.Id)
 			}
 		}
 		for _, loc := range a.Locations {
 			if containsIgnoreCase(loc, q) {
-				add(loc, SuggestionLocation, a.ID)
+				add(loc, SuggestionLocation, a.Id)
 			}
 		}
 		if year, ok := firstYearFromString(a.FirstAlbum); ok && strings.Contains(strconv.Itoa(year), q) {
-			add(strconv.Itoa(year), SuggestionFirstAlbum, a.ID)
+			add(strconv.Itoa(year), SuggestionFirstAlbum, a.Id)
 		}
 		if strings.Contains(strconv.Itoa(a.CreationDate), q) {
-			add(strconv.Itoa(a.CreationDate), SuggestionCreationYear, a.ID)
+			add(strconv.Itoa(a.CreationDate), SuggestionCreationYear, a.Id)
 		}
 	}
 

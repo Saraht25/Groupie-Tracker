@@ -1,3 +1,6 @@
+// Package api gère la communication avec les APIs externes (GroupieTrackers et Nominatim).
+// Il récupère les données des artistes, leurs localisations de concerts et les coordonnées géographiques.
+// C'est le bridge essentiel entre l'interface utilisateur et les sources de données externes.
 package api
 
 import (
@@ -9,11 +12,8 @@ import (
 )
 
 const (
-	baseURL           = "https://groupietrackers.herokuapp.com/api"
-	artistsEndpoint   = baseURL + "/artists"
-	locationsEndpoint = baseURL + "/locations"
-	datesEndpoint     = baseURL + "/dates"
-	relationEndpoint  = baseURL + "/relation"
+	baseURL         = "https://groupietrackers.herokuapp.com/api"
+	artistsEndpoint = baseURL + "/artists"
 )
 
 func fetchAPI(url string, target interface{}) error {
@@ -67,22 +67,4 @@ func getArtistLocations(url string) ([]string, error) {
 		return nil, err
 	}
 	return payload.Locations, nil
-}
-
-func GetRelations() ([]models.Relation, error) {
-	var relations []models.Relation
-	err := fetchAPI(relationEndpoint, &relations)
-	return relations, err
-}
-
-func GetLocations() ([]models.Location, error) {
-	var locations []models.Location
-	err := fetchAPI(locationsEndpoint, &locations)
-	return locations, err
-}
-
-func GetDates() ([]models.Date, error) {
-	var dates []models.Date
-	err := fetchAPI(datesEndpoint, &dates)
-	return dates, err
 }

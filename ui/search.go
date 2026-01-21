@@ -1,3 +1,6 @@
+// Package ui - search.go implémente la logique de recherche et les suggestions intelligentes.
+// Il offre une recherche multi-critères (artistes, membres, lieux, années) avec autocomplétion.
+// C'est la base de la découverte d'artistes et améliore l'expérience utilisateur avec des suggestions contextuelles.
 package ui
 
 import (
@@ -38,6 +41,7 @@ func SearchArtists(query string, artists []models.Artist) []models.Artist {
 	return result
 }
 
+// BuildSuggestions construit des suggestions multi-types pour la recherche
 func BuildSuggestions(query string, artists []models.Artist) []Suggestion {
 	q := strings.TrimSpace(strings.ToLower(query))
 	if q == "" {
@@ -85,10 +89,12 @@ func BuildSuggestions(query string, artists []models.Artist) []Suggestion {
 	return suggestions
 }
 
+// containsIgnoreCase teste la présence d'un substring sans tenir compte de la casse
 func containsIgnoreCase(s, sub string) bool {
 	return strings.Contains(strings.ToLower(s), sub)
 }
 
+// matchArtist détermine si un artiste correspond à la requête
 func matchArtist(q string, a models.Artist) bool {
 	if containsIgnoreCase(a.Name, q) {
 		return true
@@ -114,6 +120,7 @@ func matchArtist(q string, a models.Artist) bool {
 
 var yearRegexp = regexp.MustCompile(`\b(\d{4})\b`)
 
+// firstYearFromString extrait la première année trouvée dans une chaîne
 func firstYearFromString(s string) (int, bool) {
 	match := yearRegexp.FindStringSubmatch(s)
 	if len(match) < 2 {

@@ -1,74 +1,69 @@
-# Groupie Tracker - Fyne App
+# Groupie-Tracker
 
-Une application Go utilisant la framework Fyne pour explorer les artistes de musique et leurs informations de concert.
+Groupie-Tracker est un projet scolaire développé en **Go**, dont
+l'objectif est de créer une application permettant de visualiser des
+informations sur des artistes de musique à partir de l'API **Groupie
+Trackers**.
 
-## Corrections et améliorations apportées
+## Objectifs du projet
 
-### 1. **Gestion des imports**
-- ✅ Changé de `import "models"` à `import "Groupie-Tracker/models"`
-- ✅ Ajouté Fyne à `go.mod`: `fyne.io/fyne/v2 v2.4.0`
-- ✅ Correction des imports Fyne (app, widget, container)
+-   Comprendre et utiliser une API REST
+-   Manipuler des données au format JSON
+-   Structurer un projet en Go
+-   Créer une interface graphique avec le framework Fyne
+-   Mettre en relation différentes sources de données
 
-### 2. **Correction du modèle Artist**
-- ✅ Ajouté le champ `Locations []string` au modèle Artist
-- ✅ Changé `a.ID` (mauvais) à `a.Id` (correct) partout dans le code
+## Description
 
-### 3. **Structuration du code**
-- ✅ `main.go` maintenant propre et simple, appelle `ui.StartApp()`
-- ✅ `ui/app.go` initialise correctement la fenêtre Fyne
-- ✅ `ui/home.go` affiche les artistes depuis l'API
-- ✅ Correction des imports dans tous les fichiers UI et services
+L'application permet de consulter des informations sur des artistes
+musicaux : - Nom de l'artiste ou du groupe - Membres du groupe - Date de
+création - Lieux et dates de concerts
 
-### 4. **Logique de recherche et filtrage**
-- ✅ Utilisation cohérente de `artist.MatchesSearch()` dans services/search.go
-- ✅ Filters appliqués correctement sur les artistes
-- ✅ Suggestions de recherche basées sur les propriétés de l'artiste
+Les données sont récupérées depuis l'API publique Groupie Trackers et
+affichées dans une interface graphique développée avec Fyne.
 
-### 5. **Compilabilité**
-- ✅ Le projet compile sans erreurs: `go build -o groupie-tracker.exe`
-- ✅ Tous les chemins d'import sont maintenant cohérents
+## Technologies utilisées
 
-## Installation et exécution
-
-```bash
-# Télécharger les dépendances
-go mod tidy
-
-# Compiler
-go build -o groupie-tracker.exe
-
-# Exécuter
-./groupie-tracker.exe
-```
+-   Go (Golang)
+-   Fyne
+-   API Groupie Trackers
+-   JSON
 
 ## Structure du projet
 
-```
-Groupie-Tracker/
-├── main.go               # Point d'entrée
-├── api/
-│   └── api.go           # Appels API
-├── models/
-│   ├── artist.go        # Modèle Artist avec méthodes
-│   ├── date.go
-│   ├── location.go
-│   └── relation.go
-├── ui/
-│   ├── app.go           # Initialisation Fyne
-│   ├── home.go          # Page d'accueil
-│   ├── artist.go        # Cartes d'artistes
-│   ├── search.go        # Logique de recherche
-│   ├── filters.go       # Application de filtres
-│   ├── map.go
-│   └── markers.go
-└── services/
-    ├── search.go        # Service de recherche
-    └── filter.go        # Service de filtrage
+-   main.go : point d'entrée de l'application
+-   api/ : appels à l'API
+-   models/ : structures de données
+-   ui/ : interface graphique
+
+## Prérequis
+
+-   Go installé
+-   Connexion internet
+-   Fyne configuré via go.mod
+
+## Installation et exécution
+
+``` bash
+git clone https://github.com/Saraht25/Groupie-Tracker.git
+cd Groupie-Tracker
+go run main.go
 ```
 
-## Améliorations futures possibles
+## Fonctionnalités
 
-- Intégration d'une véritable carte pour les concerts
-- Meilleure gestion des erreurs API
-- Cache des données API
-- Support complet du filtrage par date/location
+-   Affichage des artistes
+-   Informations détaillées
+-   Lieux et dates de concerts
+-   Interface graphique interactive
+
+## Améliorations possibles
+
+-   Barre de recherche
+-   Filtres
+-   Amélioration UI
+-   Système de favoris
+
+## Contexte scolaire
+
+Projet réalisé dans un cadre pédagogique.
